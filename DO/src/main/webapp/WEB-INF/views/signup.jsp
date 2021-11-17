@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="resources/css/signup.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
 
@@ -39,7 +39,7 @@
 		console.log("결과1: " + xhr.responseText);
 	}
 	
-	function checkId_Sync() {
+	/* function checkId_Sync() {
 		const form = document.signupForm;
 
 		const xhr = new XMLHttpRequest();
@@ -55,7 +55,7 @@
 			alert("사용가능한 아이디 입니다.")
 		} else
 			alert("이미 등록 된 아이디 입니다.")
-	}
+	} */
 	
 	function signup() {
 		const form = document.signupForm;

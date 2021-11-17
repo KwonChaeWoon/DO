@@ -4,44 +4,45 @@
 <mapper namespace="board">
 
 	<sql id="search">
-		SELECT * FROM board
-		
-		<where>
-			<if test="search == 1">
-				sub_cname=#{keyword}
+		SELECT board.*, member.name FROM board 
+		natural join member
+		WHERE sub_cname=#{boardItem.subCname}
+			<if test="pager.search == 1">
+				and title LIKE CONCAT(CONCAT('%', #{pager.keyword}), '%')
 			</if>
-			
-			<if test="search == 2">
-				id=#{keyword}
+			<if test="pager.search == 2">
+				and name LIKE CONCAT(CONCAT('%', #{pager.keyword}), '%')
 			</if>
-			
-			<if test="search == 3">
-				title LIKE CONCAT(CONCAT('%', #{keyword}), '%')
+			<if test="pager.search == 3">
+				and content LIKE CONCAT(CONCAT('%', #{pager.keyword}), '%')
 			</if>
-			
-			<if test="search == 4">
-				content LIKE CONCAT(CONCAT('%', #{keyword}), '%')
-			</if>
-		</where>
 	</sql>		
 
 	<insert id="add">
-		INSERT INTO board(bid, sub_cname, id, title, content, image, reg_date)
-		VALUES (null , #{subCname}, #{id}, #{title}, #{content}, #{image}, NOW())
+		INSERT INTO board(bid, sub_cname, id, title, content, reg_date)
+		VALUES (null , #{subCname}, #{id}, #{title}, #{content}, NOW())
 	</insert>
 	
 	<select id="item" resultType="Board">
-		SELECT * FROM board
+		SELECT board.*, member.name 
+		FROM board natural join member
 		WHERE bid=#{bid}
+		
 	</select>
 	
 	<select id="list" resultType="Board">
-		SELECT * FROM board
+		select * from (<include refid="search"></include>) main
+		ORDER BY bid DESC
+		LIMIT #{pager.offset}, #{pager.perPage}
+	</select>
+	
+	<select id="total" resultType="Integer">
+		select count(*) from (<include refid="search"></include>) main
 	</select>
 	
 	<update id="update">
 		UPDATE board
-		SET sub_cname=#{subCname}, title=#{title}, content=#{content}, image=#{image}, reg_date=NOW()
+		SET sub_cname=#{subCname}, title=#{title}, content=#{content}, reg_date=NOW()
 		WHERE bid=#{bid}
 	</update>
 	

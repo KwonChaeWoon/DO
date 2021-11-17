@@ -5,12 +5,14 @@
 
 body {
 	margin: 0;
-	font-family: 'Noto Sans Korean';
 	height: 100vh;
+	background-color: #000000;
 	background-image: url('/resources/images/bg.png');
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: auto;
 	background-position: center;
+	overflow-x: hidden;
+	overflow-y: hidden;
 }
 
 .slick .bg1 {

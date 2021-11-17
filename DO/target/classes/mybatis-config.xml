@@ -9,10 +9,12 @@
 	<typeAliases>
 		<typeAlias type="kr.ac.kopo.DO.model.Member" alias="Member"/>
 		<typeAlias type="kr.ac.kopo.DO.model.Board" alias="Board"/>
+		<typeAlias type="kr.ac.kopo.DO.model.Reply" alias="Reply"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mybatis/member.xml" />
 		<mapper resource="mybatis/board.xml" />
+		<mapper resource="mybatis/reply.xml" />
 	</mappers>
 </configuration>

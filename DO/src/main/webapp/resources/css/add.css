@@ -1,0 +1,57 @@
+@charset "UTF-8";
+*{
+	font-family: "Noto Sans KR", sans-seif;
+}
+
+body {
+	background-color: #000000;
+}
+
+.header_logo {
+	margin: 30px 90px;
+}
+
+.header_logo a {
+	text-decoration: none;
+}
+
+.add_section {
+	background-color: #ffffff;
+	border-radius: 20px;
+	width: 70%;
+	height: 100%;
+	margin: 0 auto;
+	padding: 30px 20px;
+	margin-bottom: 30px;
+}
+
+.add_section a {
+	text-decoration: none;
+	color: #000000;
+}
+
+.container {
+	width: 90%;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+h2 {
+	font-weight: bold;
+	padding-left: 60px;
+	padding-bottom: 30px;
+
+}
+
+.row {
+	padding-bottom: 10px;
+}
+
+.button {
+	display: flex;
+	float: right;
+}
+
+.button .row {
+	padding-right: 30px;
+}

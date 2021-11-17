@@ -1,0 +1,48 @@
+@charset "UTF-8";
+*{
+	font-family: "Noto Sans KR", sans-seif;
+}
+
+body {
+	background-color: #000000;
+}
+
+.header_logo {
+	margin: 30px 90px;
+}
+
+.board_section {
+	background-color: #ffffff;
+	border-radius: 20px;
+	width: 70%;
+	height: 100%;
+	text-align: center;
+	margin: 0 auto;
+	padding: 60px 20px;
+	margin-bottom: 30px;
+}
+
+.board_section a {
+	text-decoration: none;
+	color: #000000;
+}
+
+h5 {
+	padding-bottom: 20px;
+}
+
+.table th {
+	border-right: 1px solid #ffffff;
+}
+
+.table td {
+	border-right: 1px solid #000000;
+}
+
+tbody a:hover {
+	color: #afb1b1;
+}
+
+.button {
+	float: right;
+}

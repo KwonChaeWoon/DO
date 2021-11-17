@@ -12,10 +12,10 @@
 <link href="resources/css/common.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@900&family=Playfair+Display:wght@900&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
@@ -23,6 +23,12 @@
 <script src="resources/js/indigo.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+<script>
+	function logout() {
+		alert('로그아웃 하시겠습니까?')
+	}
+</script>
 
 </head>
 <body>
@@ -34,28 +40,28 @@
 		<ul class="header_menu">
 			<li><a href="#">언어</a>
 				<ul class="sub_menu">
-					<li><a href="/board/list">Javascript</a></li>
-					<li><a href="#">Java</a></li>
-					<li><a href="#">HTML</a></li>
+					<li><a href="/board/list?sub_cname=Javascript">Javascript</a></li>
+					<li><a href="/board/list?sub_cname=Java">Java</a></li>
+					<li><a href="/board/list?sub_cname=HTML">HTML</a></li>
 				</ul>
 			</li>
 			<li><a href="#">프레임워크</a>
 				<ul class="sub_menu">
-					<li><a href="#">Spring</a></li>
-					<li><a href="#">jQuery</a></li>
-					<li><a href="#">Node.js</a></li>
+					<li><a href="/board/list?sub_cname=Spring">Spring</a></li>
+					<li><a href="/board/list?sub_cname=jQuery">jQuery</a></li>
+					<li><a href="/board/list?sub_cname=Node.js">Node.js</a></li>
 				</ul>
 			</li>
 			<li><a href="#">개발도구</a>
 				<ul class="sub_menu">
-					<li><a href="#">Visual Studio Code</a></li>
-					<li><a href="#">Eclipse</a></li>
+					<li><a href="/board/list?sub_cname=Visual Studio Code">Visual Studio Code</a></li>
+					<li><a href="/board/list?sub_cname=Eclipse">Eclipse</a></li>
 				</ul>
 			</li>
 			<li><a href="#">데이터베이스</a>
 				<ul class="sub_menu">
-					<li><a href="#">MySQL</a></li>
-					<li><a href="#">Oracle</a></li>
+					<li><a href="/board/list?sub_cname=MySQL">MySQL</a></li>
+					<li><a href="/board/list?sub_cname=Oracle">Oracle</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -75,7 +81,7 @@
 			<c:if test="${sessionScope.member != null}">
 				<div>
 					<a class="welcom">${sessionScope.member.name} 님 환영합니다.</a>
-					<a href="logout" title="로그아웃"><i class="bi bi-box-arrow-in-right" style="font-size: 2rem; color: #f0f5f4"></i></a>
+					<a href="logout" title="로그아웃" onclick="logout()"><i class="bi bi-box-arrow-in-right" style="font-size: 2rem; color: #f0f5f4"></i></a>
 					<a href="mypage" title="마이페이지"><i class="bi bi-person" style="font-size: 2rem; color: #f0f5f4"></i></a>
 				</div>
 			</c:if>

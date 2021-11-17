@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="resources/css/login.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
 
@@ -36,10 +36,10 @@
 						<button class="btn btn-dark" type="submit">로그인</button>
 					</div>
 				</form>
-					<div>
-						<a href="signup">회원가입</a>
-						<a href="find/id">아이디 찾기</a>
-						<a href="find/passwd">비밀번호 찾기</a>
+					<div class="footer" style="display: flex; justify-content: space-between;">
+						<div><a href="signup">회원가입</a></div>
+						<div><a href="find/id">아이디 찾기</a></div>
+						<div><a href="find/passwd">비밀번호 찾기</a></div>
 					</div>
 			</div>
 		</div>

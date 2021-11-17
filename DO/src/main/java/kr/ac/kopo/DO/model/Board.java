@@ -8,10 +8,10 @@ public class Board {
 	private int bid;
 	private int cid;
 	private String id;
+	private String name;
 	private String subCname;
 	private String title;
 	private String content;
-	private String image;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date regDate;
 	
@@ -51,18 +51,17 @@ public class Board {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getImage() {
-		return image;
-	}
-	public void setImage(String image) {
-		this.image = image;
-	}
 	public Date getRegdate() {
 		return regDate;
 	}
 	public void setRegdate(Date regDate) {
 		this.regDate = regDate;
 	}
-
-	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+		
 }
