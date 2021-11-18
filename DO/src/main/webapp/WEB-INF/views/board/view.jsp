@@ -31,7 +31,7 @@
 				data: JSON.stringify(reply),
 				contentType: "application/json",
 				success: function(){
-					console.log("성공");
+					alert("댓글이 등록되었습니다.");
 					
 					html = '<tr>';
 					html += '<td>';
@@ -45,6 +45,17 @@
 			});
 		});
 	});
+	
+	function reply() {
+		if(${sessionScope.member.id == null}) {
+			
+			alert("로그인 후 이용해주세요.");
+			
+			location.href = "/login";
+		} else {
+			location.href = "/board/view/${item.bid}"
+		}
+	}
 </script>
 </head>
 <body>
@@ -73,11 +84,13 @@
 					<td><fmt:formatDate value="${item.regdate}" pattern="yyyy-MM-dd"/></td>
 				</tr>
 				<tr>
-					<th>관리</th>
-					<td>
-						<button type="button" class="btn btn-danger" onclick="location.href='/board/delete?bid=${item.bid}&sub_cname=${item.subCname}'">삭제</button>
-						<button type="button" class="btn btn-primary" onclick="location.href='/board/update?bid=${item.bid}&sub_cname=${item.subCname}'">수정</button>
-					</td>
+					<c:if test="${sessionScope.member.id == item.id}">
+						<th>관리</th>
+						<td>
+							<button type="button" class="btn btn-danger" onclick="location.href='/board/delete?bid=${item.bid}&sub_cname=${item.subCname}'">삭제</button>
+							<button type="button" class="btn btn-primary" onclick="location.href='/board/update?bid=${item.bid}&sub_cname=${item.subCname}'">수정</button>
+						</td>
+					</c:if>
 				</tr>
 			</table>
 		</div>
@@ -91,10 +104,16 @@
 					<tr>
 						<td>${row.name}</td>
 					</tr>
-					<tr class="rpy">
+					<tr>
 						<td>${row.content}</td>
 					</tr>
-					</c:forEach>	
+					<tr>
+						<td><input type="button" class="btn btn-outline-danger btn-sm" value="삭제"> <input type="button" class="btn btn-outline-primary btn-sm" value="수정"></td>
+					</tr>
+					<tr>
+						<td class="line"></td>
+					</tr>
+					</c:forEach>
 				</table>
 			</div>
 			<div class="reply">
@@ -102,7 +121,7 @@
 				<input id="id" type="hidden" value="${sessionScope.member.id}">
 				<input id="name" type="hidden" value="${sessionScope.member.name}">
 				<input id="bid" type="hidden" value="${item.bid}">
-				<button id="addBtn" type="button" class="btn btn-dark">등록</button>
+				<button id="addBtn" type="button" class="btn btn-dark" onclick="reply()">등록</button>
 			</div>
 		</div>
 	</div>

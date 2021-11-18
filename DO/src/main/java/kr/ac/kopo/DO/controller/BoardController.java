@@ -71,7 +71,7 @@ public class BoardController {
 	public String update(Board item) {
 		service.update(item);
 		
-		return "redirect:list?sub_cname="+item.getSubCname();
+		return "redirect:view/"+item.getBid();
 	}
 	
 	@RequestMapping("/delete")

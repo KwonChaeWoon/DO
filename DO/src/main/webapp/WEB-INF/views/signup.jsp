@@ -163,7 +163,7 @@
 						<label>전화번호</label>
 					</div>
 					<div class="box signup_tel">
-						<input type="text" class="int" name="tel">
+						<input type="text" class="int" name="tel" placeholder="'-' 없이 번호만 입력해주세요.">
 					</div>
 					<div class="label">
 						<label>이메일</label>

@@ -82,7 +82,7 @@
 				<div>
 					<a class="welcom">${sessionScope.member.name} 님 환영합니다.</a>
 					<a href="logout" title="로그아웃" onclick="logout()"><i class="bi bi-box-arrow-in-right" style="font-size: 2rem; color: #f0f5f4"></i></a>
-					<a href="mypage" title="마이페이지"><i class="bi bi-person" style="font-size: 2rem; color: #f0f5f4"></i></a>
+					<a href="member/update?id=${sessionScope.member.id}" title="마이페이지"><i class="bi bi-person" style="font-size: 2rem; color: #f0f5f4"></i></a>
 				</div>
 			</c:if>
 			<div class="menu_toggle">

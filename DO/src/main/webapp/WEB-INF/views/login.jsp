@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,11 +37,11 @@
 						<button class="btn btn-dark" type="submit">로그인</button>
 					</div>
 				</form>
-					<div class="footer" style="display: flex; justify-content: space-between;">
-						<div><a href="signup">회원가입</a></div>
-						<div><a href="find/id">아이디 찾기</a></div>
-						<div><a href="find/passwd">비밀번호 찾기</a></div>
-					</div>
+				<div class="footer" style="display: flex; justify-content: space-between;">
+					<div><a href="signup">회원가입</a></div>
+					<div><a href="find/id">아이디 찾기</a></div>
+					<div><a href="find/passwd">비밀번호 찾기</a></div>
+				</div>
 			</div>
 		</div>
 	</div>
