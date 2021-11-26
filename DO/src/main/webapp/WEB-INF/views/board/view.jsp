@@ -15,8 +15,8 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <script>
-	$(function(){
-		$("#addBtn").click(function(){
+	$(function() {
+		$("#addBtn").click(function() {
 			const reply = {
 					id: $("#id").val(),
 					name: $("#name").val(),
@@ -30,8 +30,7 @@
 				traditional: true,
 				data: JSON.stringify(reply),
 				contentType: "application/json",
-				success: function(){
-					alert("댓글이 등록되었습니다.");
+				success: function() {
 					
 					html = '<tr>';
 					html += '<td>';
@@ -41,6 +40,22 @@
 					html += '</td></tr>';
 					
 					$("#replyTable").append( $(html) );
+					
+				}
+			});
+			if(${sessionScope.member.id != null})
+				alert("댓글이 등록되었습니다.");
+		});
+	});
+	
+	$(function() {
+		$("#deleteBtn").click(function() {
+			
+			$.ajax({
+				method: "DELETE",
+				url: "/reply/delete",
+				success: function() {
+					location.href = "/board/view/${item.bid}";				
 				}
 			});
 		});
@@ -52,8 +67,8 @@
 			alert("로그인 후 이용해주세요.");
 			
 			location.href = "/login";
-		} else {
-			location.href = "/board/view/${item.bid}"
+		}else {
+			location.href = "/board/view/${item.bid}";
 		}
 	}
 </script>
@@ -108,7 +123,9 @@
 						<td>${row.content}</td>
 					</tr>
 					<tr>
-						<td><input type="button" class="btn btn-outline-danger btn-sm" value="삭제"> <input type="button" class="btn btn-outline-primary btn-sm" value="수정"></td>
+						<c:if test="${sessionScope.member.id == row.id}">
+							<td><input id="deleteBtn" type="button" class="btn btn-outline-danger btn-sm" value="삭제"> <input id="updateBtn" type="button" class="btn btn-outline-primary btn-sm" value="수정"></td>
+						</c:if> 
 					</tr>
 					<tr>
 						<td class="line"></td>

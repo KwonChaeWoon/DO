@@ -4,8 +4,8 @@
 <mapper namespace="board">
 
 	<sql id="search">
-		SELECT board.*, member.name FROM board 
-		natural join member
+		SELECT board.*, member.name
+		FROM board natural join member
 		WHERE sub_cname=#{boardItem.subCname}
 			<if test="pager.search == 1">
 				and title LIKE CONCAT(CONCAT('%', #{pager.keyword}), '%')

@@ -14,6 +14,7 @@ public class Board {
 	private String content;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date regDate;
+	private int viewCount;
 	
 	public int getBid() {
 		return bid;
@@ -62,6 +63,12 @@ public class Board {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public int getViewCount() {
+		return viewCount;
+	}
+	public void setViewCount(int viewCount) {
+		this.viewCount = viewCount;
 	}
 		
 }

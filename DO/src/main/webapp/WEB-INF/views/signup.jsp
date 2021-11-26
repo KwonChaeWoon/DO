@@ -133,7 +133,7 @@
 					</div>
 					<div class="box signup_id">
 						<input type="text" class="int int_id" name="id" onchange="changeId()">
-						<a onclick="checkId_Async()">중복확인</a>
+						<a style="cursor: pointer;" onclick="checkId_Async()">중복확인</a>
 					</div>
 					<div class="label">
 						<label>비밀번호</label>

@@ -10,6 +10,7 @@
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="/resources/css/board.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -29,10 +30,64 @@ $(function(){
 </script>
 </head>
 <body>
-	<div class="header_logo">
-		<a href="http://localhost:9090/"><img src="/resources/images/logo.PNG"></a>
-		<a style="color: #f0f5f4;">Developer</a>
-	</div>
+	<nav class="header">
+		<div class="header_logo">
+			<a href="http://localhost:9090/"><img src="/resources/images/logo.PNG"></a>
+			<a style="color: #f0f5f4">Developer</a>
+		</div>
+		<ul class="header_menu">
+			<li><a href="#">언어</a>
+				<ul class="sub_menu">
+					<li><a href="/board/list?sub_cname=Javascript">Javascript</a></li>
+					<li><a href="/board/list?sub_cname=Java">Java</a></li>
+					<li><a href="/board/list?sub_cname=HTML">HTML</a></li>
+				</ul>
+			</li>
+			<li><a href="#">프레임워크</a>
+				<ul class="sub_menu">
+					<li><a href="/board/list?sub_cname=Spring">Spring</a></li>
+					<li><a href="/board/list?sub_cname=jQuery">jQuery</a></li>
+					<li><a href="/board/list?sub_cname=Node.js">Node.js</a></li>
+				</ul>
+			</li>
+			<li><a href="#">개발도구</a>
+				<ul class="sub_menu">
+					<li><a href="/board/list?sub_cname=Visual Studio Code">Visual Studio Code</a></li>
+					<li><a href="/board/list?sub_cname=Eclipse">Eclipse</a></li>
+				</ul>
+			</li>
+			<li><a href="#">데이터베이스</a>
+				<ul class="sub_menu">
+					<li><a href="/board/list?sub_cname=MySQL">MySQL</a></li>
+					<li><a href="/board/list?sub_cname=Oracle">Oracle</a></li>
+				</ul>
+			</li>
+		</ul>
+		<script>
+			$(document).ready(function() {
+				$(".header .sub_menu").hide();
+				$(".header .header_menu li").click(function() {
+					$("ul", this).slideToggle("fast");
+				});
+			});
+		</script>
+		<div class="header_icons">
+			<c:if test="${sessionScope.member == null}">
+				<a href="/login" title="로그인"><i class="bi bi-box-arrow-in-left" style="font-size: 2rem; color: #f0f5f4;"></i></a>
+				<a href="/signup" title="회원가입"><i class="bi bi-person" style="font-size: 2rem; color: #f0f5f4"></i></a>
+			</c:if>
+			<c:if test="${sessionScope.member != null}">
+				<div>
+					<a class="welcom">${sessionScope.member.name} 님 환영합니다.</a>
+					<a href="logout" title="로그아웃" onclick="logout()"><i class="bi bi-box-arrow-in-right" style="font-size: 2rem; color: #f0f5f4"></i></a>
+					<a href="member/update?id=${sessionScope.member.id}" title="마이페이지"><i class="bi bi-person" style="font-size: 2rem; color: #f0f5f4"></i></a>
+				</div>
+			</c:if>
+			<div class="menu_toggle">
+				<a><i class="bi bi-list" style="font-size: 2.5rem; color: #f0f5f4"></i></a>
+			</div>
+		</div>
+	</nav>
 	<div class="board_section">
 		<h2>${subCname}</h2>
 		<h5>게시물 목록 (총 개수:<fmt:formatNumber value="${pager.total}" />개)</h5>
@@ -76,7 +131,7 @@ $(function(){
 						<th style="width: 300px;">제목</th>
 						<th style="width: 100px;">작성자</th>
 						<th style="width: 100px;">등록일</th>
-						<th style="width: 100px;">관리</th>
+						<th style="width: 100px;">조회수</th>
 					</tr>
 				</thead>
 				<tbody>
