@@ -27,8 +27,8 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public void delete(String rid, String bid) {
-		dao.delete(rid, bid);
+	public void delete(String rid) {
+		dao.delete(rid);
 
 	}
 

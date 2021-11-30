@@ -1,6 +1,5 @@
 package kr.ac.kopo.DO.dao;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -27,14 +26,8 @@ public class ReplyDaoImpl implements ReplyDao {
 	}
 
 	@Override
-	public void delete(String rid, String bid) {
-		HashMap<String, String> map = new HashMap<String, String>();
-		
-		map.put("rid", rid);
-		
-		map.put("bid", bid);
-		
-		sql.delete("reply.delete", map);
+	public void delete(String rid) {
+		sql.delete("reply.delete", rid);
 
 	}
 

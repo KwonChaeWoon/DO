@@ -10,7 +10,7 @@ public interface ReplyService {
 
 	void update(Reply item);
 
-	void delete(String rid, String bid);
+	void delete(String rid);
 	
 	List<Reply> list(int bid);
 

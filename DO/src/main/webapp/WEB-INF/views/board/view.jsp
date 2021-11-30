@@ -17,9 +17,14 @@
 <script>
 	$(function() {
 		$("#addBtn").click(function() {
-			const reply = {
-					id: $("#id").val(),
-					name: $("#name").val(),
+			if(${sessionScope.member.id == null}) {
+				alert("로그인 후 이용해주세요.");
+				
+				location.href = "/login";
+				return;
+			}
+			
+			const reply = {					
 					bid: $("#bid").val(),
 					content: $("#content").val()
 			}
@@ -38,39 +43,30 @@
 					html += '</td></tr><tr class="rpy"><td>';
 					html += reply.content;
 					html += '</td></tr>';
+					html += '<td><input type="button" class="btn btn-outline-danger btn-sm deleteBtn" value="삭제"> <input type="button" class="btn btn-outline-primary btn-sm updateBtn" value="수정"></td>';
 					
 					$("#replyTable").append( $(html) );
 					
+					alert("댓글이 등록되었습니다.");
+					
 				}
-			});
-			if(${sessionScope.member.id != null})
-				alert("댓글이 등록되었습니다.");
+			});			
 		});
 	});
 	
 	$(function() {
-		$("#deleteBtn").click(function() {
-			
+		$("#replyTable").on("click", ".deleteBtn", function() {		
+			const rid = $(this).parent().parent().data("rid");
+						
 			$.ajax({
-				method: "DELETE",
-				url: "/reply/delete",
+				type: "DELETE",
+				url: "/reply/delete/" + rid,
 				success: function() {
-					location.href = "/board/view/${item.bid}";				
+					$("tr[data-rid='" + rid + "']").remove();				
 				}
 			});
 		});
 	});
-	
-	function reply() {
-		if(${sessionScope.member.id == null}) {
-			
-			alert("로그인 후 이용해주세요.");
-			
-			location.href = "/login";
-		}else {
-			location.href = "/board/view/${item.bid}";
-		}
-	}
 </script>
 </head>
 <body>
@@ -116,29 +112,27 @@
 			<div class="container">
 				<table id="replyTable">
 					<c:forEach var="row" items="${list}">
-					<tr>
+					<tr data-rid="${row.rid}">
 						<td>${row.name}</td>
 					</tr>
-					<tr>
+					<tr data-rid="${row.rid}">
 						<td>${row.content}</td>
 					</tr>
-					<tr>
+					<tr data-rid="${row.rid}">
 						<c:if test="${sessionScope.member.id == row.id}">
-							<td><input id="deleteBtn" type="button" class="btn btn-outline-danger btn-sm" value="삭제"> <input id="updateBtn" type="button" class="btn btn-outline-primary btn-sm" value="수정"></td>
+							<td><input type="button" class="btn btn-outline-danger btn-sm deleteBtn" value="삭제"> <input type="button" class="btn btn-outline-primary btn-sm updateBtn" value="수정"></td>
 						</c:if> 
 					</tr>
-					<tr>
+					<tr data-rid="${row.rid}">
 						<td class="line"></td>
 					</tr>
 					</c:forEach>
 				</table>
 			</div>
 			<div class="reply">
-				<input id="content" type="text">
-				<input id="id" type="hidden" value="${sessionScope.member.id}">
-				<input id="name" type="hidden" value="${sessionScope.member.name}">
+				<input id="content" type="text">				
 				<input id="bid" type="hidden" value="${item.bid}">
-				<button id="addBtn" type="button" class="btn btn-dark" onclick="reply()">등록</button>
+				<button id="addBtn" type="button" class="btn btn-dark">등록</button>
 			</div>
 		</div>
 	</div>
